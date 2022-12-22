@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "marvel-demo-app": {
+    "makeup-shop-app": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/marvel-demo-app",
+            "outputPath": "dist/makeup-shop-app",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -31,9 +31,17 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/uikit/dist/css/uikit.min.css",
+              "node_modules/uikit/dist/css/uikit-core.min.css",
+              "node_modules/md-uikit/dist/css/md-uikit.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/uikit/dist/js/uikit.min.js",
+              "node_modules/uikit/dist/js/uikit-core.min.js",
+              "node_modules/uikit/dist/js/uikit-icons.min.js",
+              "node_modules/md-uikit/dist/js/md-uikit.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -72,10 +80,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "marvel-demo-app:build:production"
+              "browserTarget": "makeup-shop-app:build:production"
             },
             "development": {
-              "browserTarget": "marvel-demo-app:build:development"
+              "browserTarget": "makeup-shop-app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +91,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "marvel-demo-app:build"
+            "browserTarget": "makeup-shop-app:build"
           }
         },
         "test": {
@@ -99,13 +107,21 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/uikit/dist/css/uikit.min.css",
+              "node_modules/uikit/dist/css/uikit-core.min.css",
+              "node_modules/md-uikit/dist/css/md-uikit.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/uikit/dist/js/uikit.min.js",
+              "node_modules/uikit/dist/js/uikit-core.min.js",
+              "node_modules/uikit/dist/js/uikit-icons.min.js",
+              "node_modules/md-uikit/dist/js/md-uikit.js"
+            ]
           }
         }
       }
     }
   },
-  "defaultProject": "marvel-demo-app"
+  "defaultProject": "makeup-shop-app"
 }

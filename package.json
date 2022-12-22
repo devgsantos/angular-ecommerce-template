@@ -1,5 +1,5 @@
 {
-  "name": "marvel-demo-app",
+  "name": "makeup-shop-app",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -18,8 +18,11 @@
     "@angular/platform-browser": "~13.3.0",
     "@angular/platform-browser-dynamic": "~13.3.0",
     "@angular/router": "~13.3.0",
+    "@types/uikit": "^3.14.0",
+    "md-uikit": "^1.6.3",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
+    "uikit": "^3.15.19",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
