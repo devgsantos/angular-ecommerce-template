@@ -1,1 +1,18 @@
 <app-slideshow></app-slideshow>
+<section>
+    <app-featured-cards></app-featured-cards>    
+</section>
+<section style="background-color: orchid;">
+    <div class="uk-container">
+        <h3 style="color: #e5e5e5" class="uk-heading-bullet uk-heading-line"><span>Featured Products</span></h3>
+        <app-products-generic-carousel [products]="featuredProducts"></app-products-generic-carousel>
+    </div>
+</section>
+<section style="padding: 0;">
+    <div class="uk-height-medium uk-background-cover uk-overflow-hidden uk-light uk-flex" style="background-image: url('https://picsum.photos/id/221/2000/180');">
+        <div class="uk-width-1-1 uk-text-center uk-margin-auto uk-margin-auto-vertical uk-overlay uk-overlay-primary">
+            <h1 uk-parallax="opacity: 0,1; y: -100,0; scale: 2,1; end: 50vh + 50%;">Headline</h1>
+            <p uk-parallax="opacity: 0,1; y: 100,0; scale: 0.5,1; end: 50vh + 50%;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+    </div>
+</section>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { iProduct } from 'src/app/shared/interfaces/product.interface';
+import { FeaturedProductsService } from './services/featured-products.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  featuredProducts!: iProduct[];
+
+  constructor(
+    private featured: FeaturedProductsService
+  ) { }
 
   ngOnInit(): void {
+    this.featured.getFeatured()
+    .subscribe({
+      next: (response: iProduct[]) => {
+        this.featuredProducts = response
+        console.log(response)
+      }
+    })
   }
 
 }

@@ -33,14 +33,12 @@
             "styles": [
               "src/styles.scss",
               "node_modules/uikit/dist/css/uikit.min.css",
-              "node_modules/uikit/dist/css/uikit-core.min.css",
-              "node_modules/md-uikit/dist/css/md-uikit.css"
+              "node_modules/uikit/dist/css/uikit-core.min.css"
             ],
             "scripts": [
               "node_modules/uikit/dist/js/uikit.min.js",
               "node_modules/uikit/dist/js/uikit-core.min.js",
-              "node_modules/uikit/dist/js/uikit-icons.min.js",
-              "node_modules/md-uikit/dist/js/md-uikit.js"
+              "node_modules/uikit/dist/js/uikit-icons.min.js"
             ]
           },
           "configurations": {
@@ -109,14 +107,12 @@
             "styles": [
               "src/styles.scss",
               "node_modules/uikit/dist/css/uikit.min.css",
-              "node_modules/uikit/dist/css/uikit-core.min.css",
-              "node_modules/md-uikit/dist/css/md-uikit.css"
+              "node_modules/uikit/dist/css/uikit-core.min.css"
             ],
             "scripts": [
               "node_modules/uikit/dist/js/uikit.min.js",
               "node_modules/uikit/dist/js/uikit-core.min.js",
-              "node_modules/uikit/dist/js/uikit-icons.min.js",
-              "node_modules/md-uikit/dist/js/md-uikit.js"
+              "node_modules/uikit/dist/js/uikit-icons.min.js"
             ]
           }
         }

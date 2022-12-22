@@ -4,8 +4,8 @@ import { CommonModule } from '@angular/common';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { SlideshowComponent } from './slideshow/slideshow.component';
-import { FeaturedCardsComponent } from './featured-cards/featured-cards.component';
+import { SlideshowComponent } from './components/slideshow/slideshow.component';
+import { FeaturedCardsComponent } from './components/featured-cards/featured-cards.component';
 
 
 @NgModule({

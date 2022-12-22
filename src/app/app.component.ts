@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ResponsivenessService } from './shared/services/responsiveness.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+
+  constructor (
+    public reponsiveness: ResponsivenessService
+  ) {  
+    this.reponsiveness.getBreakpoints()
+  }
+
   title = 'makeup-shop-app';
 }

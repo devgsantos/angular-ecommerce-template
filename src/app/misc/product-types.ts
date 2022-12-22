@@ -1,12 +1,12 @@
-export const productTypes = {
-    blush: 'blush',
-    bronzer: 'bronzer',
-    eyebrow: 'eyebrow',
-    eyeliner: 'eyeliner',
-    eyeshadow: 'eyeshadow',
-    foundation: 'foundation',
-    lip_liner: 'lip_liner',
-    lipstick: 'lipstick',
-    mascara: 'mascara',
-    nail_polish: 'nail_polish'
-}
+export const productTypes = [
+    {title: 'blush'},
+    {title: 'bronzer'},
+    {title: 'eyebrow'},
+    {title: 'eyeliner'},
+    {title: 'eyeshadow'},
+    {title: 'foundation'},
+    {title: 'lip_liner'},
+    {title: 'lipstick'},
+    {title: 'mascara'},
+    {title: 'nail_polish'}
+]
