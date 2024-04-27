@@ -2,3 +2,11 @@
     width: 150px;
     text-align: center;
 }
+
+.categories {
+    background-color: darkorchid;
+    .categories-item {
+        color: #ffffff;
+        cursor: pointer;
+    }
+}

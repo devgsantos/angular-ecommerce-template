@@ -1,26 +1,7 @@
 <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider>
     <ul class="uk-slider-items uk-child-width-1-2 uk-child-width-1-4@m uk-grid">
         <li *ngFor="let p of products">
-            <div class="uk-card uk-card-default uk-height-1-1 uk-border-rounded">
-                <div style="background-color: #ffffff;" class="uk-card-media-top uk-text-center uk-padding-small">
-                    <img style="margin: auto" [src]="p.api_featured_image" alt="">
-                </div>
-                <div>
-                    <div class="uk-card-body uk-text-center">
-                        <h3 class="uk-card-title uk-text-small">
-                            {{p.name}}
-                        </h3>
-                        <div class="uk-text-bold uk-text-large uk-margin-small-bottom">
-                            {{p.price | currency: 'USD'}}
-                        </div>
-                        <div class="uk-card-footer uk-text-center">
-                            <a href="" class="uk-button uk-button-primary">
-                                Details
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <app-products-generic-card [product]="p"></app-products-generic-card>
         </li>
     </ul>
 

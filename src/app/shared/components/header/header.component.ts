@@ -1,4 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { productTypes } from 'src/app/misc/product-types';
+import { iProductTypes } from '../../interfaces/product.interface';
 
 @Component({
   selector: 'app-header',
@@ -8,9 +10,12 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  productTypes!: iProductTypes[]
+
   constructor() { }
 
   ngOnInit(): void {
+    this.productTypes = productTypes
   }
 
 }

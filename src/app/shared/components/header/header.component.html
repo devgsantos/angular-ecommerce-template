@@ -1,4 +1,4 @@
-<header class="uk-container uk-container-expand">
+<header>
     <div class="uk-container uk-container-large uk-flex uk-flex-middle uk-flex-between">
         <div class="logo">
             <span>LOGO</span>
@@ -29,5 +29,12 @@
                 </ul>
             </div>
         </nav>
+    </div>
+    <div class=" uk-padding-large uk-padding-remove-top uk-padding-remove-bottom categories">
+        <div class="uk-flex uk-flex-middle uk-flex-between uk-padding-small">
+            <div *ngFor="let c of productTypes" class="categories-item">
+                {{c.title.replace('_', ' ')}}
+            </div>
+        </div>
     </div>
 </header>

@@ -24,3 +24,7 @@ export interface iProductColor {
     hex_value: string
     colour_name: string
 }
+
+export interface iProductTypes {
+    title: string
+}

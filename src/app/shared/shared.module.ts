@@ -6,6 +6,7 @@ import { HeaderMobileComponent } from './components/header-mobile/header-mobile.
 import { CategoryCarouselComponent } from './components/category-carousel/category-carousel.component';
 import { ProductsGenericCarouselComponent } from './components/products-generic-carousel/products-generic-carousel.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ProductsGenericCardComponent } from './components/products-generic-card/products-generic-card.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { FooterComponent } from './components/footer/footer.component';
     HeaderMobileComponent,
     CategoryCarouselComponent,
     ProductsGenericCarouselComponent,
-    FooterComponent
+    FooterComponent,
+    ProductsGenericCardComponent
   ],
   imports: [
     CommonModule
