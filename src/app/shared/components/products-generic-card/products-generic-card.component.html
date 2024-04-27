@@ -1,5 +1,5 @@
 <div class="uk-card uk-card-default uk-height-1-1 uk-border-rounded">
-    <div style="background-color: #ffffff;" class="uk-card-media-top uk-text-center uk-padding-small">
+    <div style="background-color: #ffffff;" class="uk-card-media-top uk-text-center uk-padding uk-flex uk-flex-middle product-image">
         <img style="margin: auto" [src]="product.api_featured_image" alt="">
     </div>
     <div>
@@ -10,7 +10,8 @@
             <div class="uk-text-bold uk-text-large uk-margin-small-bottom">
                 {{product.price | currency: 'USD'}}
             </div>
-            <div class="uk-card-footer uk-text-center">
+            <hr>
+            <div class="uk-text-center">
                 <a href="" class="uk-button uk-button-primary">
                     Details
                 </a>

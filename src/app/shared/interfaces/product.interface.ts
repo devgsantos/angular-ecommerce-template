@@ -26,5 +26,19 @@ export interface iProductColor {
 }
 
 export interface iProductTypes {
+    id: number
     title: string
+    categories: {
+        id: number,
+        title: string
+    }[]
+}
+
+export interface iProductRequestParams {
+    producTypeId?: string
+    producTypeTitle?: string
+    productCategoryId?: string
+    productCategoryTitle?: string
+    productTag?: string
+    brand?: string
 }

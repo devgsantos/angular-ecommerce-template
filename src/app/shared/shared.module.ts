@@ -7,6 +7,7 @@ import { CategoryCarouselComponent } from './components/category-carousel/catego
 import { ProductsGenericCarouselComponent } from './components/products-generic-carousel/products-generic-carousel.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ProductsGenericCardComponent } from './components/products-generic-card/products-generic-card.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -18,14 +19,16 @@ import { ProductsGenericCardComponent } from './components/products-generic-card
     ProductsGenericCardComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   exports: [
     HeaderComponent,
     HeaderMobileComponent,
     CategoryCarouselComponent,
     ProductsGenericCarouselComponent,
-    FooterComponent
+    FooterComponent,
+    ProductsGenericCardComponent
   ],
   providers: [
     ResponsivenessService

@@ -1,1 +1,33 @@
-<p>products-list works!</p>
+<div class="uk-container uk-margin-large-top">
+  <div class="uk-grid">
+    <div class="uk-visible@m uk-width-1-5">
+      <h4 class="uk-heading-bullet brands-heading">brands</h4>
+      <div #brandsDropdown uk-dropdown="mode: click">
+        <span class="uk-text-meta uk-text-medium" style="cursor: pointer;" (click)="clearBrand()">
+          Clear brand filter
+        </span>
+        <hr>
+        <ul class="uk-list">
+          <li *ngFor="let b of brands; let index = index" (click)="selectBrand(b)">
+            <div class="uk-flex brand-name">
+              <span>{{ b }}</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="active-brand" *ngIf="selectedBrand !== ''">
+        {{ selectedBrand }}
+      </div>
+    </div>
+    <div class="uk-width-1-1@s uk-width-4-5@m">
+      <div
+          class="uk-margin-auto uk-child-width-1-2 uk-child-width-1-4@m"
+          uk-grid
+      >
+          <div *ngFor="let p of products" class="uk-padding-small">
+            <app-products-generic-card [product]="p"></app-products-generic-card>
+          </div>
+      </div>
+    </div>
+  </div>  
+</div>

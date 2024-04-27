@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { productTypes } from 'src/app/misc/product-types';
 import { iProductTypes } from '../../interfaces/product.interface';
 
@@ -6,7 +6,6 @@ import { iProductTypes } from '../../interfaces/product.interface';
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent implements OnInit {
 

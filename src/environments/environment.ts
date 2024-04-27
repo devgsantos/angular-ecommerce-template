@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api: 'http://makeup-api.herokuapp.com/api/v1/products.json'
+  api: 'https://makeup-api.herokuapp.com/api/v1/products.json'
 };
 
 /*

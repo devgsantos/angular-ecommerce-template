@@ -30,10 +30,21 @@
             </div>
         </nav>
     </div>
-    <div class=" uk-padding-large uk-padding-remove-top uk-padding-remove-bottom categories">
-        <div class="uk-flex uk-flex-middle uk-flex-between uk-padding-small">
-            <div *ngFor="let c of productTypes" class="categories-item">
-                {{c.title.replace('_', ' ')}}
+    <div class="categories">
+        <div class="uk-container">
+            <div class="uk-flex uk-flex-middle uk-flex-between uk-padding-small">
+                <div *ngFor="let t of productTypes" >
+                    <a class="categories-item">{{ t.title.replace('_', ' ') }}</a>
+                    <div uk-dropdown="mode: hover">
+                        <ul class="uk-nav uk-dropdown-nav uk-list-divider">
+                            <li *ngFor="let c of t.categories" class="uk-padding-small uk-padding-remove-top uk-padding-remove-bottom uk-padding-remove-right">
+                                <a class="category-title" [routerLink]="['/products', 'list']" [queryParams]="{ producTypeId: t.id, producTypeTitle: t.title, productCategoryId: c.id, productCategoryTitle: c.title}">
+                                    {{ c.title.replace('_', ' ') }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
