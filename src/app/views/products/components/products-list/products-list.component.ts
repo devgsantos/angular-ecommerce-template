@@ -1,5 +1,5 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { iProduct, iProductRequestParams } from 'src/app/shared/interfaces/product.interface';
 import { ProductsService } from '../../services/products.service';
 import UIkit from 'uikit';
@@ -18,12 +18,18 @@ export class ProductsListComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private productsService: ProductsService
   ) { 
     this.route.queryParams
     .subscribe({
       next: value => {
         this.productsRequestParams = value;
+        this.selectedBrand = '';
+        if (value['brand']) {
+          this.selectedBrand = value['brand']
+        }
+        this.brands = [];
         this.loadProducts();
       }
     })
@@ -51,11 +57,27 @@ export class ProductsListComponent implements OnInit {
 
   selectBrand(brand: string) {
     this.selectedBrand = brand;
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: {
+        ...this.productsRequestParams,
+        brand: this.selectedBrand.replace(/\s+/g, '_'),
+      },
+    });
     UIkit.dropdown(this.brandsDropdown.nativeElement).hide();
   }
 
   clearBrand() {
     this.selectedBrand = '';
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: {
+        producTypeId: this.productsRequestParams.producTypeId,
+        producTypeTitle: this.productsRequestParams.producTypeTitle,
+        productCategoryId: this.productsRequestParams.productCategoryId,
+        productCategoryTitle: this.productsRequestParams.productCategoryTitle
+      },
+    });
     UIkit.dropdown(this.brandsDropdown.nativeElement).hide();
   }
 

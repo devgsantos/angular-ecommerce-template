@@ -3,10 +3,6 @@
     <div class="uk-visible@m uk-width-1-5">
       <h4 class="uk-heading-bullet brands-heading">brands</h4>
       <div #brandsDropdown uk-dropdown="mode: click">
-        <span class="uk-text-meta uk-text-medium" style="cursor: pointer;" (click)="clearBrand()">
-          Clear brand filter
-        </span>
-        <hr>
         <ul class="uk-list">
           <li *ngFor="let b of brands; let index = index" (click)="selectBrand(b)">
             <div class="uk-flex brand-name">
@@ -17,6 +13,7 @@
       </div>
       <div class="active-brand" *ngIf="selectedBrand !== ''">
         {{ selectedBrand }}
+        <span class="remove-filter" (click)="clearBrand()">X</span>
       </div>
     </div>
     <div class="uk-width-1-1@s uk-width-4-5@m">
