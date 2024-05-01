@@ -40,5 +40,7 @@ export interface iProductRequestParams {
     productCategoryId?: string
     productCategoryTitle?: string
     productTag?: string
+    productId?: string
+    productName?: string
     brand?: string
 }

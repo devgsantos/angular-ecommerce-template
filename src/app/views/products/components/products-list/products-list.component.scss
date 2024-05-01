@@ -13,8 +13,43 @@
 .remove-filter {
     background-color: #858585;
     color: white;
-    padding: 3px 6px;
+    padding: 0px 8px;
     border-radius: 50%;
     margin-left: 10px;
     cursor: pointer;
+}
+
+.loader {
+    width: 100px;
+    aspect-ratio: 1;
+    padding: 10px;
+    box-sizing: border-box;
+    display: grid;
+    background: transparent;
+    filter: blur(3px) contrast(7) hue-rotate(290deg);
+    mix-blend-mode: darken;
+}
+.loader:before{
+    content: "";
+    margin: auto;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    color: #ff0000;
+    background: currentColor;
+    box-shadow: -30px 0,30px 0,0 30px, 0 -30px;
+    animation: l6 1s infinite alternate;
+}
+
+@keyframes l6{
+    90%,100% {box-shadow: -10px 0,10px 0,0 10px, 0 -10px;transform: rotate(180deg)}
+}
+
+.fade-in {
+    opacity: 0; /* Começa com opacidade zero */
+    transition: opacity 0.5s ease-in-out; /* Transição suave de opacidade */
+}
+
+.fade-in.visible {
+    opacity: 1; /* Ao adicionar a classe 'visible', a opacidade se torna 1 (totalmente visível) */
 }

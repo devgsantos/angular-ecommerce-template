@@ -14,3 +14,40 @@
 .category-title {
     font-size: 18px;
 }
+
+.fill-effect {
+
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+
+    a {
+        position: relative;
+        z-index: 2;
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 100%;
+        background-color: darkorchid;
+        transition: width 0.3s ease;
+    }
+
+    &:hover::before {
+        width: 100%;
+    }
+
+    &:hover a {
+        color: #ffffff;
+    }
+}
+
+
+
+  

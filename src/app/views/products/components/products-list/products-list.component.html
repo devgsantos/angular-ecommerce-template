@@ -1,20 +1,22 @@
 <div class="uk-container uk-margin-large-top">
-  <div class="uk-grid">
+  <div *ngIf="isLoadingProducts" class="uk-flex uk-flex-column uk-flex-center uk-flex-middle" style="min-height: 450px;">
+    <div class="loader"></div>
+    <div style="margin-bottom: 120px;">Loading products...</div>
+  </div>
+  <div *ngIf="products && products.length === 0" class="uk-flex uk-flex-column uk-flex-center uk-flex-middle uk-text-center" style="min-height: 450px;">
+    <div style="margin-bottom: 120px;">No products available. Please select another category.</div>
+  </div>
+  <div [class.visible]="!isLoadingProducts" class="uk-grid fade-in">
     <div class="uk-visible@m uk-width-1-5">
       <h4 class="uk-heading-bullet brands-heading">brands</h4>
-      <div #brandsDropdown uk-dropdown="mode: click">
-        <ul class="uk-list">
-          <li *ngFor="let b of brands; let index = index" (click)="selectBrand(b)">
-            <div class="uk-flex brand-name">
-              <span>{{ b }}</span>
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div class="active-brand" *ngIf="selectedBrand !== ''">
-        {{ selectedBrand }}
-        <span class="remove-filter" (click)="clearBrand()">X</span>
-      </div>
+      <ul class="uk-list">
+        <li *ngFor="let b of brands; let index = index" (click)="selectBrand(b)">
+          <div class="uk-flex brand-name">
+            <span>{{ b }}</span>
+            <span *ngIf="selectedBrand !== ''" class="remove-filter" (click)="clearBrand()">X</span>
+          </div>
+        </li>
+      </ul>
     </div>
     <div class="uk-width-1-1@s uk-width-4-5@m">
       <div

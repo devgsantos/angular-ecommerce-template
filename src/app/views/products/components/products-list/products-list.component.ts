@@ -15,6 +15,7 @@ export class ProductsListComponent implements OnInit {
   productsRequestParams!: iProductRequestParams;
   brands: string[] = [];
   selectedBrand: string = '';
+  isLoadingProducts: boolean = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,10 +25,12 @@ export class ProductsListComponent implements OnInit {
     this.route.queryParams
     .subscribe({
       next: value => {
+        this.isLoadingProducts = true;
         this.productsRequestParams = value;
         this.selectedBrand = '';
         if (value['brand']) {
-          this.selectedBrand = value['brand']
+          this.selectedBrand = value['brand'];
+          this.brands.find(b => b === this.selectedBrand)
         }
         this.brands = [];
         this.loadProducts();
@@ -51,6 +54,7 @@ export class ProductsListComponent implements OnInit {
             this.brands.push(p.brand)
           }
         });
+        this.isLoadingProducts = false;
       }
     })
   }
@@ -64,7 +68,6 @@ export class ProductsListComponent implements OnInit {
         brand: this.selectedBrand.replace(/\s+/g, '_'),
       },
     });
-    UIkit.dropdown(this.brandsDropdown.nativeElement).hide();
   }
 
   clearBrand() {
@@ -78,7 +81,6 @@ export class ProductsListComponent implements OnInit {
         productCategoryTitle: this.productsRequestParams.productCategoryTitle
       },
     });
-    UIkit.dropdown(this.brandsDropdown.nativeElement).hide();
   }
 
 }

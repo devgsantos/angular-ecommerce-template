@@ -12,7 +12,7 @@
             </div>
             <hr>
             <div class="uk-text-center">
-                <a href="" class="uk-button uk-button-primary">
+                <a class="uk-button uk-button-primary" [routerLink]="['/products', 'details']" [queryParams]="{ producId: product.id, producName: product.name }">
                     Details
                 </a>
             </div>

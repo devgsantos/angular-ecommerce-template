@@ -1,0 +1,9 @@
+<div class="uk-container uk-margin-large-top">
+    <div *ngIf="isLoadingProducts" class="uk-flex uk-flex-column uk-flex-center uk-flex-middle" style="min-height: 450px;">
+        <div class="loader"></div>
+        <div style="margin-bottom: 120px;">Loading products...</div>
+      </div>
+      <div *ngIf="product && products.length === 0" class="uk-flex uk-flex-column uk-flex-center uk-flex-middle uk-text-center" style="min-height: 450px;">
+        <div style="margin-bottom: 120px;">No products available. Please select another category.</div>
+      </div>
+</div>

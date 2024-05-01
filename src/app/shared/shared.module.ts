@@ -8,6 +8,7 @@ import { ProductsGenericCarouselComponent } from './components/products-generic-
 import { FooterComponent } from './components/footer/footer.component';
 import { ProductsGenericCardComponent } from './components/products-generic-card/products-generic-card.component';
 import { RouterModule } from '@angular/router';
+import { WobblingLoaderComponent } from './components/wobbling-loader/wobbling-loader.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { RouterModule } from '@angular/router';
     CategoryCarouselComponent,
     ProductsGenericCarouselComponent,
     FooterComponent,
-    ProductsGenericCardComponent
+    ProductsGenericCardComponent,
+    WobblingLoaderComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +30,8 @@ import { RouterModule } from '@angular/router';
     CategoryCarouselComponent,
     ProductsGenericCarouselComponent,
     FooterComponent,
-    ProductsGenericCardComponent
+    ProductsGenericCardComponent,
+    WobblingLoaderComponent
   ],
   providers: [
     ResponsivenessService
