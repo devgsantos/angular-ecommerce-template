@@ -12,7 +12,9 @@ export class ProductsListComponent implements OnInit {
   products!: iProduct[];
   productsRequestParams!: iProductRequestParams;
   brands: string[] = [];
+  tags: string[] = [];
   selectedBrand: string = '';
+  selectedTag: string = '';
   isLoadingProducts: boolean = true;
 
   constructor(
@@ -34,7 +36,12 @@ export class ProductsListComponent implements OnInit {
           this.selectedBrand = value['brand'];
           this.brands.find(b => b === this.selectedBrand)
         }
+        if (value['productTag']) {
+          this.selectedTag = value['productTag'];
+          this.tags.find(t => t === this.selectedTag)
+        }
         this.brands = [];
+        this.tags = [];
         this.loadProducts();
       }
     });
@@ -56,6 +63,14 @@ export class ProductsListComponent implements OnInit {
             this.brands.push(p.brand)
           }
         });
+        this.products
+        .forEach(p => {
+          p.tag_list.forEach(t => {
+            if (!this.tags.includes(t)) {
+              this.tags.push(t)
+            }
+          })
+        });
         this.isLoadingProducts = false;
       }
     })
@@ -72,7 +87,33 @@ export class ProductsListComponent implements OnInit {
     });
   }
 
+  selectTag(tag: string) {
+    this.selectedTag = tag;
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: {
+        ...this.productsRequestParams,
+        productTag: this.selectedTag.replace(/\s+/g, '_'),
+      },
+    });
+  }
+
   clearBrand() {
+    this.selectedBrand = '';
+    this.selectedTag = '';
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: {
+        productTypeId: this.productsRequestParams.productTypeId,
+        producTypeTitle: this.productsRequestParams.producTypeTitle,
+        productCategoryId: this.productsRequestParams.productCategoryId,
+        productCategoryTitle: this.productsRequestParams.productCategoryTitle
+      },
+    });
+  }
+
+  clearTag() {
+    this.selectedTag = '';
     this.selectedBrand = '';
     this.router.navigate([], {
       relativeTo: this.route,

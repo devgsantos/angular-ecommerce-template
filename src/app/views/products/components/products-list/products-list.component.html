@@ -6,17 +6,31 @@
   <div *ngIf="products && products.length === 0" class="uk-flex uk-flex-column uk-flex-center uk-flex-middle uk-text-center" style="min-height: 450px;">
     <div style="margin-bottom: 120px;">No products available. Please select another category.</div>
   </div>
-  <div [class.visible]="!isLoadingProducts" class="uk-grid fade-in">
+  <div [class.visible]="!isLoadingProducts && (products && products.length > 0)" class="uk-grid fade-in">
     <div class="uk-visible@m uk-width-1-5">
-      <h4 class="uk-heading-bullet brands-heading">brands</h4>
-      <ul class="uk-list">
-        <li *ngFor="let b of brands; let index = index" (click)="selectBrand(b)">
-          <div class="uk-flex brand-name">
-            <span>{{ b }}</span>
-            <span *ngIf="selectedBrand !== ''" class="remove-filter" (click)="clearBrand()">X</span>
-          </div>
-        </li>
-      </ul>
+      <div class="brands">
+        <h4 class="uk-heading-bullet brands-heading">brands</h4>
+        <ul class="uk-list">
+          <li *ngFor="let b of brands; let index = index" (click)="selectBrand(b)">
+            <div class="uk-flex brand-name">
+              <span>{{ b }}</span>
+              <span *ngIf="selectedBrand !== ''" class="remove-filter" (click)="clearBrand()">X</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <hr>
+      <div class="tags">
+        <h4 class="uk-heading-bullet brands-heading">tags</h4>
+        <ul class="uk-list">
+          <li *ngFor="let t of tags; let index = index" (click)="selectTag(t)">
+            <div class="uk-flex brand-name">
+              <span>{{ t }}</span>
+              <span *ngIf="selectedTag === t" class="remove-filter" (click)="clearTag()">X</span>
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
     <div class="uk-width-1-1@s uk-width-4-5@m">
       <div

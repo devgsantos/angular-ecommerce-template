@@ -29,7 +29,7 @@
                             Brand: {{product.brand}}
                         </div>
                     </div>
-                    <div class="rating-stars uk-margin uk-margin-remove-left uk-margin-remove-right">
+                    <div *ngIf="product.rating !== null" class="rating-stars uk-margin uk-margin-remove-left uk-margin-remove-right">
                         <h6>
                             Ratings
                         </h6>
