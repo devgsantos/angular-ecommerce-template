@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, QueryList, ViewChildren } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { iProduct, iProductRequestParams } from 'src/app/shared/interfaces/product.interface';
 import { ProductsService } from '../../services/products.service';
@@ -10,6 +10,7 @@ import { ProductsService } from '../../services/products.service';
 })
 export class ProductsDetailsComponent { 
 
+  @ViewChildren('colorItems') colorItems!: QueryList<ElementRef>;
   product!: iProduct;
   isLoadingProducts: boolean = true;
   productsRequestParams!: iProductRequestParams;
@@ -64,6 +65,15 @@ export class ProductsDetailsComponent {
 
   rate(index: number): Array<any> {
     return Array.from({ length: index })
+  }
+
+  selectColor(e: Event) {
+    this.colorItems
+    .forEach(elem => {
+      const div: HTMLElement = elem.nativeElement;
+      div.classList.remove('selected-color')
+    });
+    (e.target as HTMLElement).parentElement!.classList.add('selected-color')
   }
 
 }

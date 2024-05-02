@@ -41,9 +41,9 @@
                         <h6>
                             Colors
                         </h6>
-                        <div class="uk-flex uk-flex-middle uk-flex-wrap uk-flex-wrap-around" style="gap: 5px;">
+                        <div class="uk-flex uk-flex-middle uk-flex-wrap uk-flex-wrap-around" style="gap: 8px;">
                             <div *ngFor="let c of product.product_colors">
-                                <div class="color-item">
+                                <div #colorItems class="color-item" (click)="selectColor($event)">
                                     <div class="uk-border-circle uk-margin-auto" style="height: 35px; width: 35px;" [style]="{background: c.hex_value}">
                                     </div>
                                     <div class="uk-text-center uk-light" style="color: black; font-size: 10px;">
@@ -71,7 +71,7 @@
                         {{product.price | currency: 'BRL'}}
                     </h2>
                     <hr>
-                    <div class="uk-flex uk-flex-middle">
+                    <div class="uk-flex uk-flex-center uk-flex-middle">
                         <button (click)="remove()" class="uk-button uk-button-default increment-button" id="decrementBtn">-</button>
                         <input [(ngModel)]="quantity" type="text" class="uk-input uk-width-small uk-text-large uk-text-center" id="quantityInput" value="1">
                         <button (click)="add()" class="uk-button uk-button-default increment-button" id="incrementBtn">+</button>

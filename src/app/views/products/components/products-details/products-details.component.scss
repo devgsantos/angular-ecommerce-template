@@ -31,3 +31,12 @@
 h6 {
   margin-bottom: 5px !important;
 }
+
+.color-item {
+  padding: 5px;
+  cursor: pointer;
+}
+
+.selected-color {
+  background-color: #ccc;
+}
