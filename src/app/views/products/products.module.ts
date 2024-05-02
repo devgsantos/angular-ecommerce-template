@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ProductsRoutingModule } from './products-routing.module';
@@ -20,6 +20,9 @@ import { FormsModule } from '@angular/forms';
     ProductsRoutingModule,
     FormsModule,
     SharedModule
+  ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
   ]
 })
 export class ProductsModule { }
