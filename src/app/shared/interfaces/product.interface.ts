@@ -35,7 +35,7 @@ export interface iProductTypes {
 }
 
 export interface iProductRequestParams {
-    producTypeId?: string
+    productTypeId?: string
     producTypeTitle?: string
     productCategoryId?: string
     productCategoryTitle?: string

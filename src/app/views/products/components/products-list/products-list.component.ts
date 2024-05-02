@@ -1,8 +1,7 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute,  Router } from '@angular/router';
 import { iProduct, iProductRequestParams } from 'src/app/shared/interfaces/product.interface';
 import { ProductsService } from '../../services/products.service';
-import UIkit from 'uikit';
 
 @Component({
   templateUrl: './products-list.component.html',
@@ -10,8 +9,7 @@ import UIkit from 'uikit';
 })
 export class ProductsListComponent implements OnInit {
 
-  @Input() products!: iProduct[];
-  @ViewChild('brandsDropdown') brandsDropdown!: ElementRef;
+  products!: iProduct[];
   productsRequestParams!: iProductRequestParams;
   brands: string[] = [];
   selectedBrand: string = '';
@@ -26,6 +24,10 @@ export class ProductsListComponent implements OnInit {
     .subscribe({
       next: value => {
         this.isLoadingProducts = true;
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
         this.productsRequestParams = value;
         this.selectedBrand = '';
         if (value['brand']) {
@@ -35,7 +37,7 @@ export class ProductsListComponent implements OnInit {
         this.brands = [];
         this.loadProducts();
       }
-    })
+    });
   }
 
   ngOnInit(): void {
@@ -46,8 +48,8 @@ export class ProductsListComponent implements OnInit {
     this.productsService
     .getProducts(this.productsRequestParams)
     .subscribe({
-      next: response => {
-        this.products = response;
+      next: (response:  iProduct | iProduct[]) => {
+        this.products = response as iProduct[];
         this.products
         .forEach(p => {
           if (!this.brands.includes(p.brand)) {
@@ -75,7 +77,7 @@ export class ProductsListComponent implements OnInit {
     this.router.navigate([], {
       relativeTo: this.route,
       queryParams: {
-        producTypeId: this.productsRequestParams.producTypeId,
+        productTypeId: this.productsRequestParams.productTypeId,
         producTypeTitle: this.productsRequestParams.producTypeTitle,
         productCategoryId: this.productsRequestParams.productCategoryId,
         productCategoryTitle: this.productsRequestParams.productCategoryTitle

@@ -1,3 +1,33 @@
-:host {
-  display: block;
+.detail-image {
+  height: 450px;
+}
+
+.uk-badge {
+  font-size: 14px !important;
+  background: darkorchid !important;
+}
+
+.product-container {
+  margin: 50px 0;
+}
+
+.increment-button {
+  background-color: #dcdcdc
+}
+
+.rating {
+  color: orange;
+  cursor: pointer;
+}
+
+.star {
+  font-size: 24px;
+}
+
+.star .fa-star-o {
+  color: #ccc;
+}
+
+h6 {
+  margin-bottom: 5px !important;
 }

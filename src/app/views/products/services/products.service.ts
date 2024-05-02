@@ -13,16 +13,28 @@ export class ProductsService {
     private http: HttpClient
   ) { }
 
-  getProducts(productsRequestParams: iProductRequestParams): Observable<iProduct[]> {
+  getProducts(productsRequestParams: iProductRequestParams): Observable<iProduct[] | iProduct> {
 
-    const { producTypeTitle, productCategoryTitle, productTag, brand } = productsRequestParams
+    const { producTypeTitle, productCategoryTitle, productTag, brand, productId } = productsRequestParams
 
-    return this.http.get<iProduct[]>(`
-      ${environment.api}?product_type=${producTypeTitle}${productCategoryTitle ? '&category_title=' + productCategoryTitle : ''}${productTag ? '&product_tags=' + productTag : ''}${brand ? '&brand=' + brand : ''}
-    `)
-    .pipe(
-      take(3),
-      timeout(10000)
-    )
+    if (productId) {
+      return this.http.get<iProduct[]>(`
+        ${environment.api.replace(`products.json`, `products/${productId}.json`)}
+      `)
+      .pipe(
+        take(3),
+        timeout(10000)
+      )
+    } else {
+      return this.http.get<iProduct[]>(`
+        ${environment.api}?product_type=${producTypeTitle}${productCategoryTitle ? '&category_title=' + productCategoryTitle : ''}${productTag ? '&product_tags=' + productTag : ''}${brand ? '&brand=' + brand : ''}
+      `)
+      .pipe(
+        take(3),
+        timeout(10000)
+      )
+    }
+
+   
   }
 }
