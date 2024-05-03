@@ -1,7 +1,9 @@
 import { Component, ElementRef, QueryList, ViewChildren } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { iProduct, iProductRequestParams } from 'src/app/shared/interfaces/product.interface';
+import { iProduct, iProductColor, iProductRequestParams } from 'src/app/shared/interfaces/product.interface';
 import { ProductsService } from '../../services/products.service';
+import { DataService } from 'src/app/shared/services/data.service';
+import { iCart } from 'src/app/views/cart/interfaces/cart.interface';
 
 @Component({
   selector: 'app-products-details',
@@ -18,12 +20,13 @@ export class ProductsDetailsComponent {
   partialValue: number = 0;
   rating: number = 0;
   stars: number[] = [0, 1, 2, 3, 4];
-
+  selectedColor!: iProductColor;
 
   constructor (
     private route: ActivatedRoute,
     private router: Router,
-    private productsService: ProductsService
+    private productsService: ProductsService,
+    private dataService: DataService
   ) { 
     this.route.queryParams
     .subscribe({
@@ -37,6 +40,15 @@ export class ProductsDetailsComponent {
         this.loadProduct();
       }
     });
+    this.dataService
+    .cartList
+    .subscribe({
+      next: value => {
+        if (value.length > 0) {
+          console.log(value);
+        }
+      }
+    })
   }
 
   loadProduct() {
@@ -52,7 +64,7 @@ export class ProductsDetailsComponent {
 
   add() {
     this.quantity++;
-    this.partialValue = parseFloat(this.product.price) * this.quantity
+    this.partialValue = parseFloat(this.product.price) * this.quantity; 
   }
 
   remove() {
@@ -63,11 +75,39 @@ export class ProductsDetailsComponent {
     this.partialValue = parseFloat(this.product.price) * this.quantity
   }
 
+  addToCart() {
+    if (this.quantity === 0) {
+      return
+    }
+    if (this.product.product_colors.length > 0 && !this.selectedColor) {
+      alert('Choose a color');
+      return
+    }
+    const existingItem = this.dataService.cartList.getValue()!.find(item => item.id === this.product.id);
+    const addItem: iCart ={
+      ...this.product,
+      cart_quantity: this.quantity,
+      partial_value: this.partialValue,
+      selected_color: this.selectedColor ? this.selectedColor : null
+    }
+
+    if (existingItem) {
+      if (this.quantity !== existingItem.cart_quantity) {
+        existingItem.cart_quantity = this.quantity;
+        existingItem.partial_value = this.partialValue;
+      }
+    } else {
+      const currentCartList = this.dataService.cartList.getValue();
+      this.dataService.cartList.next([...currentCartList, addItem]);
+    }
+  }
+
   rate(index: number): Array<any> {
     return Array.from({ length: index })
   }
 
-  selectColor(e: Event) {
+  selectColor(e: Event, color: iProductColor) {
+    this.selectedColor = color;
     this.colorItems
     .forEach(elem => {
       const div: HTMLElement = elem.nativeElement;

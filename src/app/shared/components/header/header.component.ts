@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { productTypes } from 'src/app/misc/product-types';
 import { iProductTypes } from '../../interfaces/product.interface';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-header',
@@ -9,9 +10,22 @@ import { iProductTypes } from '../../interfaces/product.interface';
 })
 export class HeaderComponent implements OnInit {
 
-  productTypes!: iProductTypes[]
+  productTypes!: iProductTypes[];
+  cartQuantity: number = 0;
 
-  constructor() { }
+  constructor(
+    private dataService: DataService
+  ) { 
+    this.dataService
+    .cartList
+    .subscribe({
+      next: value => {
+        if (value.length > 0) {
+          this.cartQuantity = value.length;
+        }
+      }
+    })
+  }
 
   ngOnInit(): void {
     this.productTypes = productTypes

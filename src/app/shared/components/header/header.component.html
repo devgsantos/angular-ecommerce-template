@@ -8,22 +8,25 @@
                 <ul class="uk-navbar-nav">
                     <li class="uk-active">
                         <a>
-                            HOME
+                            <span uk-icon="icon: home; ratio: 0.75" style="margin-bottom: 6px;"></span>HOME
                         </a>
                     </li>
                     <li class="uk-parent">
                         <a>
-                            PRODUCTS
+                            <span uk-icon="icon: thumbnails; ratio: 0.75" style="margin-bottom: 6px;"></span>PRODUCTS
+                        </a>
+                    </li>
+                    <li class="uk-position-relative">
+                        <div *ngIf="cartQuantity > 0" class="uk-position-top-right" style="top: 10px">
+                            <span class="uk-badge" style="margin-bottom: 6px;">{{cartQuantity}}</span>
+                        </div>
+                        <a>
+                            <span uk-icon="icon: cart; ratio: 0.75" style="margin-bottom: 6px;"></span>Cart
                         </a>
                     </li>
                     <li>
                         <a>
-                            THE COMPANY
-                        </a>
-                    </li>
-                    <li>
-                        <a>
-                            SUPPORT
+                            <span uk-icon="icon: user; ratio: 0.75" style="margin-bottom: 6px;"></span>ACCOUNT
                         </a>
                     </li>
                 </ul>

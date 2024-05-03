@@ -1,4 +1,4 @@
-<div class="uk-container product-container">
+<div class="uk-container uk-margin-auto product-container">
     <div *ngIf="isLoadingProducts" class="uk-flex uk-flex-column uk-flex-center uk-flex-middle" style="min-height: 450px;">
         <div class="loader"></div>
         <div style="margin-bottom: 120px;">Loading products...</div>
@@ -43,7 +43,7 @@
                         </h6>
                         <div class="uk-flex uk-flex-middle uk-flex-wrap uk-flex-wrap-around" style="gap: 8px;">
                             <div *ngFor="let c of product.product_colors">
-                                <div #colorItems class="color-item" (click)="selectColor($event)">
+                                <div #colorItems class="color-item" (click)="selectColor($event, c)">
                                     <div class="uk-border-circle uk-margin-auto" style="height: 35px; width: 35px;" [style]="{background: c.hex_value}">
                                     </div>
                                     <div class="uk-text-center uk-light" style="color: black; font-size: 10px;">
@@ -68,7 +68,7 @@
             <div id="priceCard">
                 <div class="uk-card uk-card-default uk-card-body">
                     <h2 class="uk-text-center uk-text-bold">
-                        {{product.price | currency: 'BRL'}}
+                        {{product.price | currency: 'USD'}}
                     </h2>
                     <hr>
                     <div class="uk-flex uk-flex-center uk-flex-middle">
@@ -78,10 +78,10 @@
                       </div>
                     <hr>
                     <div class="uk-text-center">
-                        Partial value: {{partialValue | currency: 'BRL'}}
+                        Partial value: {{partialValue | currency: 'USD'}}
                     </div>
                     <hr>
-                    <button class="uk-button uk-button-primary uk-width-1-1 uk-border-rounded" style="margin-bottom: 20px;">
+                    <button (click)="addToCart()" class="uk-button uk-button-primary uk-width-1-1 uk-border-rounded" style="margin-bottom: 20px;">
                         Add to cart
                     </button>
                     <button class="uk-button uk-button-secondary uk-width-1-1 uk-border-rounded" style="margin-bottom: 20px;">
@@ -89,8 +89,13 @@
                     </button>
                     <div class="uk-text-center">
                         <button class="uk-button uk-button-text">
+                            <span uk-icon="icon: heart; ratio: 0.75"></span>&nbsp;&nbsp;
                             Add to wishlist
                         </button>
+                        <!-- <button class="uk-button uk-button-text"  style="color: red;">
+                            <span uk-icon="icon: heart; ratio: 0.75"></span>&nbsp;&nbsp;
+                            Wishlisted
+                        </button> -->
                     </div>
                 </div>
             </div>
