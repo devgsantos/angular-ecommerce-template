@@ -12,6 +12,7 @@ export class HeaderComponent implements OnInit {
 
   productTypes!: iProductTypes[];
   cartQuantity: number = 0;
+  wishlistQuantity: number = 0;
 
   constructor(
     private dataService: DataService
@@ -20,8 +21,17 @@ export class HeaderComponent implements OnInit {
     .cartList
     .subscribe({
       next: value => {
-        if (value.length > 0) {
+        if (value.length) {
           this.cartQuantity = value.length;
+        }
+      }
+    })
+    this.dataService
+    .wishList
+    .subscribe({
+      next: value => {
+        if (value.length) {
+          this.wishlistQuantity = value.length;
         }
       }
     })

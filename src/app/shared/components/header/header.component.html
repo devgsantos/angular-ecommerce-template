@@ -40,7 +40,10 @@
                                         <span uk-icon="icon: file-text; ratio: 0.75"></span>&nbsp;&nbsp;Orders
                                     </a>
                                 </li>
-                                <li>
+                                <li class="uk-position-relative">
+                                    <div *ngIf="wishlistQuantity > 0" class="uk-position-top-right">
+                                        <span class="uk-badge" style="margin-bottom: 6px;">{{wishlistQuantity}}</span>
+                                    </div>
                                     <a class="uk-button uk-button-text uk-width-1-1 uk-text-left">
                                         <span uk-icon="icon: heart; ratio: 0.75"></span>&nbsp;&nbsp;Wishlisted
                                     </a>

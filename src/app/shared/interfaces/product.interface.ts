@@ -25,6 +25,11 @@ export interface iProductColor {
     colour_name: string
 }
 
+export interface iSelectedVariant {
+    id: number;
+    color: iProductColor
+}
+
 export interface iProductTypes {
     id: number
     title: string

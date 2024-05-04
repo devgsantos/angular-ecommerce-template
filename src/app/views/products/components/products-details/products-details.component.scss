@@ -3,7 +3,9 @@
 }
 
 .preview-image-grid-item {
-  height: 80px !important;
+  height: 50px !important;
+  width: 50px;
+  margin: auto;
   border: solid 2px #c3c3c3;
   object-fit: cover;
   overflow: hidden;

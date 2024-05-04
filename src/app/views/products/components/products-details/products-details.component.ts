@@ -1,6 +1,6 @@
 import { Component, ElementRef, QueryList, ViewChildren } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { iProduct, iProductColor, iProductRequestParams } from 'src/app/shared/interfaces/product.interface';
+import { iProduct, iProductColor, iProductRequestParams, iSelectedVariant } from 'src/app/shared/interfaces/product.interface';
 import { ProductsService } from '../../services/products.service';
 import { DataService } from 'src/app/shared/services/data.service';
 import { iCart } from 'src/app/views/cart/interfaces/cart.interface';
@@ -21,6 +21,8 @@ export class ProductsDetailsComponent {
   rating: number = 0;
   stars: number[] = [0, 1, 2, 3, 4];
   selectedColor!: iProductColor;
+  isWishListed: boolean = false;
+  selectedVariants: iSelectedVariant[] = [];
 
   constructor (
     private route: ActivatedRoute,
@@ -46,6 +48,15 @@ export class ProductsDetailsComponent {
       next: value => {
         if (value.length > 0) {
           console.log(value);
+        }
+      }
+    });
+    this.dataService
+    .wishList
+    .subscribe({
+      next: value => {
+        if (value && value.find(p => p.id === this.product.id)) {
+          this.isWishListed === true
         }
       }
     })
@@ -100,6 +111,23 @@ export class ProductsDetailsComponent {
     } else {
       const currentCartList = this.dataService.cartList.getValue();
       this.dataService.cartList.next([...currentCartList, addItem]);
+    }
+  }
+
+  addToWishList() {
+    const existingItem = this.dataService.wishList.getValue()!.find(item => item.id === this.product.id);
+    const addItem: iProduct ={
+      ...this.product
+    }
+    let currentWishlist = this.dataService.wishList.getValue();
+
+    if (!existingItem) {
+      this.dataService.wishList.next([...currentWishlist, addItem]);
+      this.isWishListed = true;
+    } else {
+      currentWishlist = currentWishlist.slice(0, currentWishlist.indexOf(currentWishlist.find(item => item.id === this.product.id)!))
+      this.dataService.wishList.next(currentWishlist);
+      this.isWishListed = false
     }
   }
 

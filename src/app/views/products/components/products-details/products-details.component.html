@@ -104,14 +104,14 @@
                         Buy now
                     </button>
                     <div class="uk-text-center">
-                        <button class="uk-button uk-button-text">
+                        <button *ngIf="!isWishListed" (click)="addToWishList()" class="uk-button uk-button-text">
                             <span uk-icon="icon: heart; ratio: 0.75"></span>&nbsp;&nbsp;
                             Add to wishlist
                         </button>
-                        <!-- <button class="uk-button uk-button-text"  style="color: red;">
+                        <button *ngIf="isWishListed" (click)="addToWishList()" class="uk-button uk-button-text"  style="color: red;">
                             <span uk-icon="icon: heart; ratio: 0.75"></span>&nbsp;&nbsp;
                             Wishlisted
-                        </button> -->
+                        </button>
                     </div>
                 </div>
             </div>

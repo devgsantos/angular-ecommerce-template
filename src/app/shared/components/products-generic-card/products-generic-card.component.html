@@ -1,14 +1,24 @@
 <div class="uk-card uk-card-default uk-height-1-1 uk-border-rounded">
-    <div style="background-color: #ffffff;" class="uk-card-media-top uk-text-center uk-padding uk-flex uk-flex-middle product-image uk-padding-small">
+    <div class="uk-card-media-top uk-text-center uk-padding uk-flex uk-flex-middle product-image uk-padding-small">
         <img style="margin: auto" [src]="product.api_featured_image" alt="">
     </div>
     <div>
         <div class="uk-card-body uk-text-center uk-padding-small">
-            <h3 class="uk-card-title uk-text-small limit-text product-name">
+            <h3 class="uk-card-title uk-text-small limit-text product-name uk-margin-remove">
                 {{product.name}}
             </h3>
             <div class="uk-text-bold uk-text-large uk-margin-small-bottom">
                 {{product.price | currency: 'USD'}}
+            </div>
+            <div class="uk-text-center add-wishlist">
+                <button *ngIf="!isWishListed" (click)="addToWishList()" class="uk-button uk-button-text">
+                    <span uk-icon="icon: heart; ratio: 0.75"></span>&nbsp;&nbsp;
+                    Add to wishlist
+                </button>
+                <button *ngIf="isWishListed" (click)="addToWishList()" class="uk-button uk-button-text"  style="color: red;">
+                    <span uk-icon="icon: heart; ratio: 0.75"></span>&nbsp;&nbsp;
+                    Wishlisted
+                </button>
             </div>
             <hr>
             <div class="uk-text-center">
