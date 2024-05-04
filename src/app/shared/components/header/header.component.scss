@@ -48,6 +48,8 @@
     }
 }
 
-
-
-  
+.user-menu-list {
+    li::nth-child(even) {
+        margin: 10px 0 !important;
+    }
+}

@@ -1,5 +1,13 @@
 .detail-image {
-  height: 450px;
+  height: 350px;
+}
+
+.preview-image-grid-item {
+  height: 80px !important;
+  border: solid 2px #c3c3c3;
+  object-fit: cover;
+  overflow: hidden;
+  height: 100%;
 }
 
 .uk-badge {
@@ -39,4 +47,10 @@ h6 {
 
 .selected-color {
   background-color: #ccc;
+}
+
+.details-image {
+  border: solid #c3c3c3 2px;
+  border-radius: 30px;
+  overflow: auto;
 }

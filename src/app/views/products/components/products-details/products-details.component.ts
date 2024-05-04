@@ -77,6 +77,7 @@ export class ProductsDetailsComponent {
 
   addToCart() {
     if (this.quantity === 0) {
+      alert('Choose how many you want.');
       return
     }
     if (this.product.product_colors.length > 0 && !this.selectedColor) {

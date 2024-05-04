@@ -6,17 +6,17 @@
         <nav class="uk-width-1-1" uk-navbar>
             <div class="uk-navbar-right">
                 <ul class="uk-navbar-nav">
-                    <li class="uk-active">
+                    <li routerLink="'/home'" routerLinkActive="uk-active">
                         <a>
                             <span uk-icon="icon: home; ratio: 0.75" style="margin-bottom: 6px;"></span>HOME
                         </a>
                     </li>
-                    <li class="uk-parent">
+                    <li class="uk-parent"  [routerLink]="['/products', 'list']" routerLinkActive="uk-active">
                         <a>
                             <span uk-icon="icon: thumbnails; ratio: 0.75" style="margin-bottom: 6px;"></span>PRODUCTS
                         </a>
                     </li>
-                    <li class="uk-position-relative">
+                    <li class="uk-position-relative"  routerLink="'/cart'" routerLinkActive="uk-active">
                         <div *ngIf="cartQuantity > 0" class="uk-position-top-right" style="top: 10px">
                             <span class="uk-badge" style="margin-bottom: 6px;">{{cartQuantity}}</span>
                         </div>
@@ -28,6 +28,25 @@
                         <a>
                             <span uk-icon="icon: user; ratio: 0.75" style="margin-bottom: 6px;"></span>ACCOUNT
                         </a>
+                        <div class="uk-padding-small" uk-dropdown="mode: hover">
+                            <ul class="uk-list uk-margin-remove user-menu-list">
+                                <li>
+                                    <a class="uk-button uk-button-text uk-width-1-1 uk-text-left">
+                                        <span uk-icon="icon: cog; ratio: 0.75"></span>&nbsp;&nbsp;Profile
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="uk-button uk-button-text uk-width-1-1 uk-text-left">
+                                        <span uk-icon="icon: file-text; ratio: 0.75"></span>&nbsp;&nbsp;Orders
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="uk-button uk-button-text uk-width-1-1 uk-text-left">
+                                        <span uk-icon="icon: heart; ratio: 0.75"></span>&nbsp;&nbsp;Wishlisted
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -38,9 +57,9 @@
             <div class="uk-flex uk-flex-middle uk-flex-between uk-padding-small">
                 <div *ngFor="let t of productTypes" >
                     <a class="categories-item">{{ t.title.replace('_', ' ') }}</a>
-                    <div uk-dropdown="mode: hover">
+                    <div uk-dropdown="mode: hover" class="uk-padding-small">
                         <ul class="uk-nav uk-dropdown-nav uk-list-divider">
-                            <li *ngFor="let c of t.categories" class=" fill-effect uk-padding-small uk-padding-remove-top uk-padding-remove-bottom uk-padding-remove-right">
+                            <li *ngFor="let c of t.categories" class="uk-margin-remove fill-effect uk-padding-small uk-padding-remove-top uk-padding-remove-bottom uk-padding-remove-right">
                                 <a class="category-title" [routerLink]="['/products', 'list']" [queryParams]="{ productTypeId: t.id, producTypeTitle: t.title, productCategoryId: c.id, productCategoryTitle: c.title}">
                                     {{ c.title.replace('_', ' ') }}
                                 </a>
