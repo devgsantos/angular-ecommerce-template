@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { iCart } from 'src/app/views/cart/interfaces/cart.interface';
+import { iCartItem } from 'src/app/views/cart/interfaces/cart.interface';
 import { iProduct } from '../interfaces/product.interface';
 
 @Injectable({
@@ -8,7 +8,7 @@ import { iProduct } from '../interfaces/product.interface';
 })
 export class DataService {
 
-  cartList = new BehaviorSubject<iCart[]>([])
+  cartList = new BehaviorSubject<iCartItem[]>([])
   wishList = new BehaviorSubject<iProduct[]>([])
 
   constructor() { }

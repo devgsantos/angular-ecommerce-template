@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { iProduct, iProductColor, iProductRequestParams, iSelectedVariant } from 'src/app/shared/interfaces/product.interface';
 import { ProductsService } from '../../services/products.service';
 import { DataService } from 'src/app/shared/services/data.service';
-import { iCart } from 'src/app/views/cart/interfaces/cart.interface';
+import { iCartItem } from 'src/app/views/cart/interfaces/cart.interface';
 
 @Component({
   selector: 'app-products-details',
@@ -17,7 +17,7 @@ export class ProductsDetailsComponent {
   isLoadingProducts: boolean = true;
   productsRequestParams!: iProductRequestParams;
   quantity: number = 0;
-  partialValue: number = 0;
+  itemTotal: number = 0;
   rating: number = 0;
   stars: number[] = [0, 1, 2, 3, 4];
   selectedColor!: iProductColor;
@@ -42,6 +42,7 @@ export class ProductsDetailsComponent {
         this.loadProduct();
       }
     });
+    // TODO - VERIFY IF PRODUCT ALREADY EXISTS IN THE CART LIST
     this.dataService
     .cartList
     .subscribe({
@@ -75,7 +76,7 @@ export class ProductsDetailsComponent {
 
   add() {
     this.quantity++;
-    this.partialValue = parseFloat(this.product.price) * this.quantity; 
+    this.itemTotal = parseFloat(this.product.price) * this.quantity; 
   }
 
   remove() {
@@ -83,7 +84,7 @@ export class ProductsDetailsComponent {
       return
     }
     this.quantity--
-    this.partialValue = parseFloat(this.product.price) * this.quantity
+    this.itemTotal = parseFloat(this.product.price) * this.quantity
   }
 
   addToCart() {
@@ -96,17 +97,17 @@ export class ProductsDetailsComponent {
       return
     }
     const existingItem = this.dataService.cartList.getValue()!.find(item => item.id === this.product.id);
-    const addItem: iCart ={
+    const addItem: iCartItem ={
       ...this.product,
       cart_quantity: this.quantity,
-      partial_value: this.partialValue,
+      partial_value: this.itemTotal,
       selected_color: this.selectedColor ? this.selectedColor : null
     }
 
     if (existingItem) {
       if (this.quantity !== existingItem.cart_quantity) {
         existingItem.cart_quantity = this.quantity;
-        existingItem.partial_value = this.partialValue;
+        existingItem.partial_value = this.itemTotal;
       }
     } else {
       const currentCartList = this.dataService.cartList.getValue();

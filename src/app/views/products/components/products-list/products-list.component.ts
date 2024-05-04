@@ -58,6 +58,10 @@ export class ProductsListComponent implements OnInit {
       next: (response:  iProduct | iProduct[]) => {
         this.products = response as iProduct[];
         this.products
+        .sort(
+          (a,b) => parseFloat(b.price) - parseFloat(a.price)
+        )
+        this.products
         .forEach(p => {
           if (!this.brands.includes(p.brand)) {
             this.brands.push(p.brand)

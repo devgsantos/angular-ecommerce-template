@@ -1,1 +1,48 @@
-<p>cart works!</p>
+<div class="uk-container uk-margin-auto">
+    <div *ngIf="cartItems" class="uk-grid uk-child-width-1-2 uk-visible@m" style="margin: 50px 0;">
+        <div>
+            <ul class="uk-list uk-list-divider">
+                <li *ngFor="let c of cartItems">
+                    <app-products-cart-list-item [cartItem]="c"></app-products-cart-list-item>
+                </li>
+            </ul>
+        </div>
+        <div class="uk-padding-small">
+            <div class="uk-card uk-card-default uk-padding-small">
+                <div class="uk-flex uk-flex-between uk-flex-middle" style="gap: 10px;">
+                    <div class="uk-flex uk-flex-middle">
+                        <div>
+                            Payment method:
+                        </div>&nbsp;&nbsp;
+                        <select class="uk-select" aria-label="Select" name="paymentMethod">
+                            <option>Credit Card</option>
+                            <option>Paypal</option>
+                        </select>
+                    </div>
+                    <div>
+                        <div class="uk-text-right total-price">
+                            <span>
+                                Total:
+                            </span>&nbsp;&nbsp;
+                            <span class="uk-text-center uk-text-bold uk-text-large">
+                                {{totalPrice | currency: 'USD'}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div>
+                    <div class="uk-flex uk-flex-middle" style="flex: 1 1">
+                        <div>
+                            Shipping addres:
+                        </div>&nbsp;&nbsp;
+                        <select class="uk-select" aria-label="Select" name="paymentMethod">
+                            <option>23th Hover St, 25 - Washington/DC</option>
+                            <option>Main St, 86 - Washington/DC</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

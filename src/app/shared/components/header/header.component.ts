@@ -23,6 +23,7 @@ export class HeaderComponent implements OnInit {
       next: value => {
         if (value.length) {
           this.cartQuantity = value.length;
+          localStorage.setItem('cart', JSON.stringify(value))
         }
       }
     })
@@ -32,6 +33,8 @@ export class HeaderComponent implements OnInit {
       next: value => {
         if (value.length) {
           this.wishlistQuantity = value.length;
+          localStorage.setItem('wishlist', JSON.stringify(value))
+
         }
       }
     })

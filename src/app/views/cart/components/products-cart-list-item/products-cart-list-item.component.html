@@ -1,0 +1,31 @@
+<div class="uk-grid-collapse uk-margin-small" uk-grid>
+    <div class="uk-flex uk-flex-center uk-flex-middle uk-width-1-3">
+        <img [src]="cartItem.api_featured_image" [alt]="cartItem.name" style="width: auto; height: 75px;">
+    </div>
+    <div class="uk-width-2-3">
+        <div class="uk-card-body uk-padding-small">
+            <div class="uk-card-title product-name">{{ cartItem.name }}</div>
+            <div class="uk-grid uk-child-width-1-2">
+                <div>
+                    <div class="uk-flex uk-flex-between uk-flex-middle">
+                        <div>
+                            <span class="uk-text-meta">
+                                Price: {{cartItem.price | currency: 'USD'}}
+                            </span>
+                        </div>
+                        <div>
+                            <span class="uk-text-meta">
+                                Quantity: {{cartItem.cart_quantity}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <span class="uk-text-meta">
+                        Item Total: {{itemTotal  | currency: 'USD'}}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
